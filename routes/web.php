@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\EcritureController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/comptes/{uuid}/ecritures', [EcritureController::class ,'index']);
