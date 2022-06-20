@@ -25,3 +25,4 @@ Route::delete('/comptes/{uuid}/ecritures/{uuid_ecriture}', [EcritureController::
 Route::get('/dossiers/{uuid}', [DossierController::class ,'index']);
 Route::post('/dossiers', [DossierController::class ,'store']);
 Route::put('/dossiers/{uuid}', [DossierController::class ,'update']);
+Route::delete('/dossiers/{uuid}', [DossierController::class ,'destroy']);

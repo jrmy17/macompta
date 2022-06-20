@@ -67,8 +67,11 @@ class DossierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
-        //
+        DB::delete("delete from dossiers where uuid=?", [$uuid]);
+        return response()->json([
+            'uuid' => $uuid
+        ], 204);
     }
 }
