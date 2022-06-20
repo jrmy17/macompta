@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DossierRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,7 +28,7 @@ class DossierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DossierRequest $request)
     {
         DB::insert("insert into dossiers (uuid, login, password, name) values (?, ?, ?, ?)", [
             $request->uuid,
@@ -48,9 +49,16 @@ class DossierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DossierRequest $request, $uuid)
     {
-        //
+        DB::update("update dossiers set password=?, name=? where uuid=?", [
+            $request->password,
+            $request->name,
+            $uuid
+        ]);
+        return response()->json([
+            'uuid' => $uuid
+        ], 204);
     }
 
     /**
