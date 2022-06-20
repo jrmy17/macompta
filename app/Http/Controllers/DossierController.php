@@ -29,7 +29,15 @@ class DossierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::insert("insert into dossiers (uuid, login, password, name) values (?, ?, ?, ?)", [
+            $request->uuid,
+            $request->login,
+            $request->password,
+            $request->name
+        ]);
+        return response()->json([
+            'uuid' => $request->uuid
+        ], 201);
     }
 
 

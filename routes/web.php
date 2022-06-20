@@ -23,3 +23,4 @@ Route::delete('/comptes/{uuid}/ecritures/{uuid_ecriture}', [EcritureController::
 
 
 Route::get('/dossiers/{uuid}', [DossierController::class ,'index']);
+Route::post('/dossiers', [EcritureController::class ,'store']);
