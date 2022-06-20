@@ -51,9 +51,19 @@ class EcritureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($uuid, $uuid_ecriture, EcritureRequest $request)
     {
-        //
+        DB::update("update ecritures set label=?, date=?, type=?, amount=? where compte_uuid=? and uuid=?", [
+            $request->label,
+            $request->date,
+            $request->type,
+            $request->amount,
+            $uuid,
+            $uuid_ecriture
+        ]);
+        return response()->json([
+            'uuid' => $uuid
+        ], 204);
     }
 
     /**
