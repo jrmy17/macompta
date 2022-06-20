@@ -17,3 +17,4 @@ Route::get('/comptes/{uuid}/ecritures', [EcritureController::class ,'index']);
 Route::post('/comptes/{uuid}/ecritures', [EcritureController::class ,'store']);
 
 Route::put('/comptes/{uuid}/ecritures/{uuid_ecriture}', [EcritureController::class ,'update']);
+Route::delete('/comptes/{uuid}/ecritures/{uuid_ecriture}', [EcritureController::class ,'destroy']);

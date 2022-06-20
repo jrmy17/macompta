@@ -72,8 +72,11 @@ class EcritureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($uuid, $uuid_ecriture)
     {
-        //
+        DB::delete("delete from ecritures where uuid=?", [$uuid_ecriture]);
+        return response()->json([
+            'uuid' => $uuid_ecriture
+        ], 204);
     }
 }
