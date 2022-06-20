@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("password", 255);
             $table->string("name");
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrentOnUpdate();
+            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
             $table->primary('uuid');
         });
     }

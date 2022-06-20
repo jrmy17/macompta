@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EcritureRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,9 +28,20 @@ class EcritureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($uuid, EcritureRequest $request)
     {
-        //
+        DB::insert("insert into ecritures (uuid, compte_uuid, label, date, type, amount) values (?, ?, ?, ?, ?, ?)", [
+            $request->uuid,
+            $uuid,
+            $request->label,
+            $request->date,
+            $request->type,
+            $request->amount
+        ]);
+        return response()->json([
+            'uuid' => $request->uuid
+        ], 201);
+
     }
 
     /**

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('type', ['C', 'D']);
             $table->double('amount', 14, 2)->default(0);
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrentOnUpdate();
+            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
             $table->primary(['uuid', 'compte_uuid']);
 
             $table

@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/comptes/{uuid}/ecritures', [EcritureController::class ,'index']);
+Route::post('/comptes/{uuid}/ecritures', [EcritureController::class ,'store']);
